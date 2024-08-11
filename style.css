@@ -1,0 +1,1093 @@
+/*
+Theme Name: mota
+Theme URI: 
+Author: Nyko95
+Description: Thème pour le projet "Créez un site WordPress complexe pour une photographe freelance"
+Version: 1.0
+Tags: Photographe, event, photos
+Text Domain: mota
+*/
+
+/* ********* STYLE GENERALE ********** */
+body {
+  text-transform: uppercase;
+  margin: 0;
+  color: black;
+  font-family: "space mono", monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*CSS POUR LE HEADER*/
+
+.menu li {
+  list-style: none;
+}
+
+.menu li a {
+  list-style: none; /* Supprime les puces devant chaque élément de liste */
+  text-decoration: none; /* Supprime le soulignement des liens dans les éléments li */
+  font-family: "Space Mono", monospace; /* Utilisez la police Space Mono */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.7px;
+  text-align: left;
+  color: black;
+  text-transform: uppercase; /* Mettre tout le texte en majuscules */
+  margin-top: 14px;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    align-items: center;
+  }
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  flex: 0 0 auto; /* Ne pas agrandir ou réduire le logo */
+  margin-left: 216px; /* Décalage du logo sur la droite */
+  margin-top: 28px; /* Décalage du logo vers le bas */
+}
+
+.main-navigation {
+  text-align: right; /* Aligne le texte à droite */
+  margin-right: 120px; /* Décalage des liens vers la gauche */
+  display: flex;
+  margin-top: 28px;
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.main-navigation li {
+  margin-left: 20px;
+}
+
+.main-navigation li:first-child {
+  margin-left: 0px;
+}
+
+main-navigation li:nth-child(3) {
+  margin-left: 1226px; /* Décalage du troisième lien sur la droite */
+}
+
+.main-navigation ul li a:hover {
+  font-weight: bold; /* Rend le texte plus gras au survol */
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/*CSS POUR LE FOOTER*/
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #000000;
+  padding-top: 8px;
+}
+.footer-links {
+  display: flex;
+  justify-content: space-between; /* Aligner les éléments sur les extrémités */
+}
+
+.footer-links ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-right: 85.5px; /* Espacement entre les éléments */
+}
+
+.footer-links li:last-child {
+  margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+  pointer-events: none; /* Désactive les clics */
+}
+
+/*MODALE DE CONTACT*/
+
+.modal {
+  display: none;
+  z-index: 4; /* Assure que la modale est placée au-dessus du reste du contenu */
+  width: 100%; /* Largeur de la modale sur toute la largeur de la fenêtre */
+  height: 100%; /* Hauteur de la modale sur toute la hauteur de la fenêtre */
+  overflow: auto; /* Ajoute un défilement automatique si le contenu de la modale dépasse la taille de la fenêtre */
+  background-color: transparent; /* Fond transparent pour la modale */
+  position: fixed; /* Positionnement fixe pour maintenir la modale en place */
+  left: 0; /* Alignement à gauche de la fenêtre */
+  top: 0; /* Alignement en haut de la fenêtre */
+  font-family: "Space Mono", monospace;
+}
+
+.modal-content {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 80px;
+  padding-top: 18px;
+  width: 600px;
+  height: 770px;
+  border: solid 5px black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+#modal-contact label {
+  display: block;
+  margin-bottom: 10px;
+  text-transform: uppercase; /* Texte en majuscules */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 46px;
+}
+
+#modal-contact input[type="submit"] {
+  background-color: #d8d8d8;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  box-shadow: 0px 2px 1px 0px #00000005;
+  width: 263px; /* Largeur fixe */
+  height: 50px; /* Hauteur fixe */
+  top: 683px;
+  left: 165px;
+  border-radius: 2px 0px 0px 0px;
+  opacity: 0px;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17.77px;
+  text-align: left;
+  text-align: center;
+}
+
+#modal-contact input[type="submit"]:hover {
+  background-color: #bfbfbf;
+}
+#modal-contact textarea {
+  width: 263px;
+  height: 210px;
+  top: 23px;
+  gap: 0px;
+  border-radius: 8px;
+  border: 1px solid #b8bbc2;
+  opacity: 0px;
+}
+
+#modal-contact input[type="text"],
+#modal-contact input[type="email"],
+#modal-contact input[type="text"][name="ref-photo"] {
+  width: 263px;
+  height: 40px;
+  top: 23px;
+  gap: 0px;
+  border-radius: 8px;
+  border: 1px solid #b8bbc2;
+  opacity: 0px;
+}
+
+/*STRUCTURE CSS DU TEMPLATE SINGLE-PHOTOGRAPHIES*/
+
+.section_photo {
+  display: flex;
+  margin: 0 100px;
+  align-items: flex-end;
+}
+
+.section_photo .description_photo {
+  width: 50%;
+}
+.section_photo .description_photo h1 {
+  width: inherit;
+  font-style: italic;
+  font-size: 3em;
+  font-weight: 400;
+}
+.section_photo .description_photo :last-child {
+  border-bottom: solid 2px black;
+  margin-bottom: 0.4em;
+  padding-bottom: 25px;
+}
+
+.photo-image {
+  object-fit: contain; /* Applique le comportement "contain" pour ajuster l'image dans le conteneur */
+  width: 100%;
+  height: 100%;
+}
+
+.section_photo .photo-image {
+  width: 50%;
+  padding-left: 1em;
+}
+.section_photo .photo-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* ********************** section navigation ****************** */
+.section_navigation {
+  height: 118px;
+  display: flex;
+  margin: 0 100px 70px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px black;
+}
+.section_navigation .contact_photo {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.section_navigation .contact_photo button {
+  width: 40%;
+  height: 50px;
+  margin-right: 5px;
+}
+
+.contact_photo button {
+  font-family: "Space Mono", monospace;
+  border: none;
+  background: #d8d8d8;
+  box-shadow: 0px 2px 1px 0px #00000005;
+  transition: color 1s ease;
+}
+.contact_photo button:hover {
+  background: black;
+  color: #d8d8d8;
+}
+
+.section_navigation .navigation_photo {
+  display: flex;
+  gap: 50px;
+  margin-top: 75px;
+}
+
+/* ****************** miniatures ******************* */
+
+.navigation_photo {
+  position: relative; /* Assurez-vous que le conteneur a une position relative */
+}
+
+.thumbnail-preview {
+  position: absolute; /* Position absolue pour un placement précis */
+  width: 100px; /* Largeur fixe */
+  height: 80px; /* Hauteur fixe */
+  left: 50%; /* Centre horizontalement */
+  top: -450%; /* Positionner plus haut */
+  transform: translate(-50%, -50%); /* Centrer parfaitement */
+  overflow: hidden; /* Masque le dépassement */
+  border: 1px solid #ccc; /* Bordure */
+  opacity: 0; /* Opacité initiale à 0 */
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; /* Transition pour opacité et transformation */
+  display: flex; /* Utilise flexbox pour aligner l'image au centre */
+  align-items: center; /* Centre l'image verticalement */
+  justify-content: center; /* Centre l'image horizontalement */
+  background-size: cover; /* Remplir le conteneur */
+  background-repeat: no-repeat; /* Pas de répétition */
+}
+
+.thumbnail-preview img {
+  width: 100%; /* Largeur de l'image à 100% */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+  display: block; /* Rend l'image un élément de bloc */
+}
+
+.prev-photo-link .thumbnail-preview {
+  transform: translateX(
+    -150%
+  ); /* Déplace l'image vers la gauche pour le survol initial */
+}
+
+.next-photo-link .thumbnail-preview {
+  transform: translateX(
+    150%
+  ); /* Déplace l'image vers la droite pour le survol initial */
+}
+
+.prev-photo-link:hover .thumbnail-preview {
+  opacity: 1; /* Opacité maximale au survol */
+  transform: translateX(-50%); /* Replacer l'image au centre depuis la gauche */
+}
+
+.next-photo-link:hover .thumbnail-preview {
+  opacity: 1; /* Opacité maximale au survol */
+  transform: translateX(-50%); /* Replacer l'image au centre depuis la droite */
+}
+/* ****************** photos apparentées ******************* */
+
+.section-suggestion {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.section-suggestion-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-suggestion-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-suggestion-grid {
+  display: px grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.section_suggestion h2 {
+  margin: 50px 100px;
+}
+
+.photo-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 100px 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.photo-block .photo {
+  width: 49%;
+}
+
+.photo-block .photo img {
+  width: 100%;
+  height: 40vw;
+  object-fit: cover;
+}
+
+.photo {
+  position: relative;
+}
+
+.photo .hover_photo {
+  position: absolute;
+  width: 100%;
+  height: 0vw;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 0.8s ease-in-out;
+  opacity: 0;
+}
+
+.photo .hover_photo .eye {
+  position: absolute;
+  width: 4vw;
+  height: 3vw;
+  object-fit: contain;
+  top: 45%;
+  right: 42%;
+}
+
+.photo .hover_photo .fullscreen {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  top: 18px;
+  right: 20px;
+}
+
+.photo .hover_photo .reference {
+  position: absolute;
+  bottom: 0;
+  left: 2vw;
+  color: white;
+}
+
+.photo .hover_photo .categorie {
+  position: absolute;
+  color: white;
+  bottom: 0;
+  right: 2vw;
+}
+
+.photo:hover .hover_photo {
+  font-size: 0.8em;
+  height: 40vw;
+  opacity: 1;
+}
+
+.photo :nth-child(2) .hover_photo {
+  left: auto;
+  right: 0;
+}
+
+#load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.load-more-button {
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 50px;
+  text-align: center;
+  background: #d8d8d8;
+  width: 272px;
+  height: 50px;
+}
+
+.load-more-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* ****************** hero-header ******************* */
+
+.hero-header {
+  height: 75vh; /*Hauteur de la fenêtre*/
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.overlay-image {
+  position: relative;
+  z-index: 2;
+}
+/* image:photographe event */
+.overlay-image img {
+  width: 70%;
+  height: 5vw;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+}
+
+/* ****************** page accueil filtre et tri ******************* */
+.block_photo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 100px 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.block_photo .photo {
+  width: 47%;
+}
+
+.block_photo .photo img {
+  width: 100%;
+  height: 40vw;
+  object-fit: cover;
+}
+
+.section_filter-photos {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 100px 0px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 35px;
+}
+
+.section_filter-photos .custom-select {
+  display: flex;
+  justify-content: space-between;
+  width: 47%;
+}
+
+.section_filter-photos .custom-select #format-filter,
+.section_filter-photos .custom-select #category-filter {
+  height: 40px;
+  width: 40%;
+}
+
+.section_filter-photos .custom-select .select2-container--open {
+  border: 1.5px solid #215aff !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.section_filter-photos .custom-select:last-child {
+  display: flex;
+  justify-content: flex-end;
+  width: 47%;
+}
+
+.section_filter-photos .custom-select:last-child #order-filter {
+  height: 40px;
+  width: 45%;
+}
+
+.section_filter-photos .custom-select:last-child .select2-container--open {
+  border: 1.5px solid #215aff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.select2-container--default.select2-container--open.select2-container--below
+  .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--below
+  .select2-selection--multiple {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  display: none;
+}
+
+.select2-container--default .select2-selection--single:after {
+  content: ">";
+  position: absolute;
+  right: 10px;
+  top: 6%;
+  transform: rotate(90deg);
+  margin-right: 8px;
+}
+
+.select2-container--open .select2-selection--single:after {
+  content: "<";
+}
+
+.select2-container--default
+  .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #ffd6d6 !important;
+  color: white;
+}
+
+.select2-container--default
+  .select2-results__option--highlighted.select2-results__option--selectable:active {
+  background-color: #fe5858 !important;
+}
+
+.select2-container--default .select2-results__option--selected {
+  background-color: #e00000 !important;
+  color: white;
+}
+
+/* ************************** LIGHTBOX**************************** */
+/* Style pour la Lightbox */
+#lightbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s, visibility 0.8s;
+  z-index: 1005;
+  animation: lightboxIn 0.5s;
+}
+.lightbox-content {
+  align-content: center;
+}
+#lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#lightbox button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#lightbox button.cross {
+  position: absolute;
+  top: 5vw;
+  right: 5vw;
+  width: 50px;
+  height: 50px;
+}
+
+#lightbox .lightbox-photo {
+  max-width: 80%;
+  max-height: 80vh;
+  display: block;
+  margin: auto;
+  position: relative;
+  object-fit: contain; /* Ajuste la taille de l'image pour qu'elle s'adapte tout en conservant ses proportions */
+  animation: lightboxIn 0.5s;
+}
+
+#lightbox .prev,
+#lightbox .next {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#lightbox .prev {
+  left: 5vw;
+}
+
+#lightbox .next {
+  right: 5vw;
+}
+
+#lightbox .lightbox-info {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem; /* Espace entre l'image et les informations */
+}
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ****************** version responsive ******************* */
+@media screen and (max-width: 768px) {
+  .section_photo {
+    flex-direction: column-reverse;
+    margin: 0 30px 20px;
+  }
+  .section_photo .description_photo {
+    width: 100%;
+  }
+  .section_photo .description_photo h1 {
+    font-size: 2em;
+  }
+  .section_photo .description_photo :last-child {
+    border: none;
+  }
+  .section_photo .photo-image {
+    width: 100%;
+  }
+
+  .section_navigation {
+    width: 100%;
+    margin: auto;
+    border-top: solid 2px black;
+  }
+  .section_navigation .contact_photo {
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+  }
+  .section_navigation .contact_photo button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .section_navigation .navigation_photo {
+    display: none;
+  }
+
+  .section_suggestion h2 {
+    margin: 25px 30px;
+  }
+  .section_suggestion .block_photo {
+    flex-direction: column;
+    margin: 0 30px 20px;
+    gap: 20px;
+  }
+  .section_suggestion .block_photo .photo {
+    width: 100%;
+  }
+  .section_suggestion .block_photo .photo img {
+    height: 65vw;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .suggestion_photo .related-photo .hover_photo {
+    width: 100%;
+    height: 0vw;
+  }
+
+  .suggestion_photo .related-photo .hover_photo a .eye {
+    width: 50px;
+    right: 42%;
+  }
+
+  .suggestion_photo .related-photo .hover_photo .fullscreen {
+    width: 50px;
+  }
+
+  .suggestion_photo .related-photo:hover .hover_photo {
+    height: 65vw;
+  }
+}
+
+/* ***************** MOBILE FOOTER *************************** */
+@media screen and (max-width: 768px) {
+  .site-footer {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-left: 50px;
+  }
+
+  .site-footer .container-footer {
+    height: auto;
+    padding-top: 25px;
+  }
+
+  #footer-menu {
+    position: relative;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+
+  #footer-menu .last-link {
+    margin-right: 80px;
+  }
+}
+
+/* ***************** MOBILE photos apparentées *************************** */
+@media screen and (max-width: 768px) {
+  .section_photo {
+    flex-direction: column-reverse;
+    margin: 0 30px 20px;
+  }
+
+  .section_photo .description_photo {
+    width: 100%;
+  }
+
+  .section_photo .description_photo h1 {
+    font-size: 2em;
+  }
+
+  .section_photo .description_photo :last-child {
+    border: none;
+  }
+
+  .section_photo .photo-image {
+    width: 100%;
+  }
+
+  .section_navigation {
+    width: 100%;
+    margin: auto;
+    border-top: solid 2px black;
+  }
+
+  .section_navigation .contact_photo {
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .section_navigation .contact_photo button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .section_navigation .navigation_photo {
+    display: none;
+  }
+
+  .section_suggestion h2 {
+    margin: 25px 30px;
+  }
+
+  .section_suggestion .photo-block {
+    flex-direction: column;
+    margin: 0 30px 20px;
+    gap: 20px;
+  }
+
+  .section_suggestion .photo-block .photo {
+    width: 100%;
+  }
+
+  .section_suggestion .photo-block .photo img {
+    height: 65vw;
+    width: 100%;
+  }
+
+  .section_block-photo .photo-block .photo img {
+    height: 65vw;
+    width: 100%;
+  }
+}
+
+/* ************************** MOBILE MODAL**************************** */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 80vw;
+  }
+}
+
+/* ************************** HEADER VERSION MOBILE**************************** */
+
+/* Style général pour le menu burger */
+.menu-toggle {
+  padding-top: 5px;
+  display: none; /* Par défaut, caché */
+  background: transparent;
+  border: none;
+  z-index: 5;
+  position: relative;
+}
+
+.menu-toggle .menu-toggle-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+}
+
+.menu-toggle .line {
+  width: 1.5rem;
+  height: 0.2rem;
+  background: black;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-toggle.cross .line:nth-child(1) {
+  transform: rotate(-45deg) translate(1px, 6px);
+}
+
+.menu-toggle.cross .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.cross .line:nth-child(3) {
+  transform: rotate(45deg) translate(-8px, -17px);
+}
+
+/* Style spécifique pour le menu principal en responsive */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Affiché en mode responsive */
+  }
+  .menu-toggle,
+  .main-navigation {
+    font-family: "Space Mono", monospace;
+  }
+  .main-navigation {
+    display: none;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 84px);
+    background-color: #e00000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 4;
+    overflow-y: auto;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .main-navigation.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .main-navigation ul {
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .main-navigation li {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+
+  .main-navigation li a {
+    color: white;
+    font-size: 2em;
+    text-decoration: none;
+    transition: font-weight 0.3s ease;
+  }
+
+  .main-navigation li a:hover {
+    font-weight: bold;
+  }
+
+  .menu-toggle-icon span {
+    width: 1.5rem;
+    height: 0.2rem;
+    background: black;
+  }
+
+  #primary-menu {
+    width: 100%;
+    justify-content: center;
+    z-index: 4;
+  }
+  #primary-menu a {
+    color: white;
+    font-size: 44px;
+    line-height: 65px;
+    margin-right: 20px;
+    font-family: "Space Mono", monospace;
+  }
+
+  .hero-header {
+    height: 60vw;
+  }
+  .overlay-image img {
+    scale: 1.5;
+  }
+  .section_filter-photos {
+    flex-direction: column;
+    margin: 20px;
+    gap: 12px;
+  }
+  .section_filter-photos .custom-select:last-child {
+    width: 100%;
+  }
+  .section_filter-photos .custom-select {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+  }
+  .section_filter-photos .custom-select #category-filter,
+  .section_filter-photos .custom-select #format-filter {
+    width: 80%;
+  }
+  .section_filter-photos
+    .custom-select
+    #category-filter
+    .selection
+    .select2-selection--single,
+  .section_filter-photos
+    .custom-select
+    #format-filter
+    .selection
+    .select2-selection--single {
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .section_filter-photos
+    .custom-select
+    #category-filter
+    .selection
+    .select2-selection--single::after,
+  .section_filter-photos
+    .custom-select
+    #format-filter
+    .selection
+    .select2-selection--single::after {
+    top: 20%;
+  }
+  .section_filter-photos:last-child {
+    display: flex;
+    justify-content: center;
+  }
+  .block_photo {
+    flex-direction: column;
+    margin: 25px;
+    align-content: center;
+  }
+  .block_photo .photo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .block_photo .photo img {
+    height: 70vw;
+  }
+
+  .block_photo .photo .hover_photo {
+    display: none;
+  }
+  .site-logo {
+    margin-left: 100px;
+    margin-top: 25px;
+  }
+}
+
+/* Modale responsive */
+
+@media screen and (max-width:768px){
+  .wpcf7-form{
+    margin-left: 0px;
+  }
+}
