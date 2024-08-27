@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     // Récupérer la référence de la photo
     var photoReference = $(this).data("reference");
     // Préremplir le champ "RÉF. PHOTO"
-    $("#referencePhoto").val(photoReference);
+    $(".referencePhoto").val(photoReference);
 
     // Ouvrir la modale de contact
     $("#modal-contact").fadeIn();

@@ -1,7 +1,6 @@
 /*
 Theme Name: mota
 Theme URI: 
-Author: Nyko95
 Description: Thème pour le projet "Créez un site WordPress complexe pour une photographe freelance"
 Version: 1.0
 Tags: Photographe, event, photos
@@ -1090,4 +1089,16 @@ main-navigation li:nth-child(3) {
   .wpcf7-form{
     margin-left: 0px;
   }
+}
+
+
+/* Vie privée */
+
+.post-text{
+  padding: 0px 40px;
+}
+
+.post-title{
+  display: flex;
+  justify-content: center;
 }
